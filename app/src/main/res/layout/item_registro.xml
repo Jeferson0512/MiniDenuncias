@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:focusable="true"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/foto_image"
+            android:layout_width="70dp"
+            android:layout_height="90dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="16dp"
+            app:srcCompat="@mipmap/ic_launcher"/>
+
+        <TextView
+            android:id="@+id/titulo_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/foto_image"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="Titulo de la Denuncia"/>
+
+        <TextView
+            android:id="@+id/nombre_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/foto_image"
+            android:layout_below="@+id/titulo_text"
+            android:textSize="20sp"
+            android:text="Nombre"
+            android:layout_marginBottom="6dp"/>
+
+        <FrameLayout
+            android:id="@+id/LineaCabecera"
+            android:layout_width="fill_parent"
+            android:layout_height="2px"
+            android:layout_alignLeft="@+id/nombre_text"
+            android:layout_below="@id/nombre_text"
+            android:layout_span="6"
+            android:background="#B8B6B5" >
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/ubicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/nombre_text"
+            android:layout_below="@+id/nombre_text"
+            android:textSize="20sp"
+            android:layout_marginTop="6dp"
+            android:text="Ubicación"/>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
