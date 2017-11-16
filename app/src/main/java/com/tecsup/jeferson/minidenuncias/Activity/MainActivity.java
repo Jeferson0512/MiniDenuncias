@@ -1,10 +1,12 @@
 package com.tecsup.jeferson.minidenuncias.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.tecsup.jeferson.minidenuncias.Adapter.RegistroAdapter;
@@ -25,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView productosList;
 
+    private static final int REGISTER_FORM_REQUEST = 100;
+
+    public void showRegister(View view){
+        startActivityForResult(new Intent(this, RegistroDenuActivity.class), REGISTER_FORM_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(requestCode == REGISTER_FORM_REQUEST) {
+            // refresh data
+            initialize();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         productosList = (RecyclerView) findViewById(R.id.recyclerview);
         productosList.setLayoutManager(new LinearLayoutManager(this));
 
-        productosList.setAdapter(new RegistroAdapter());
+        productosList.setAdapter(new RegistroAdapter(this));
 
         initialize();
     }

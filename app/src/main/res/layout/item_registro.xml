@@ -38,9 +38,10 @@
             android:id="@+id/nombre_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/menu_button"
             android:layout_toEndOf="@+id/foto_image"
             android:layout_below="@+id/titulo_text"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:text="Nombre"
             android:layout_marginBottom="6dp"/>
 
@@ -58,11 +59,22 @@
             android:id="@+id/ubicacion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/menu_button"
             android:layout_alignLeft="@+id/nombre_text"
             android:layout_below="@+id/nombre_text"
-            android:textSize="20sp"
-            android:layout_marginTop="6dp"
+            android:textSize="18sp"
+            android:layout_marginTop="9dp"
             android:text="Ubicación"/>
+
+        <ImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_menu_dots"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:layout_alignParentEnd="true"
+            android:background="@null"/>
 
     </RelativeLayout>
 
