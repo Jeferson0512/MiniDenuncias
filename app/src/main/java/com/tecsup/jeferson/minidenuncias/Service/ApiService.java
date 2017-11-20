@@ -27,14 +27,24 @@ public interface ApiService {
 
     String API_BASE_URL = "https://practica-lab13-jeferson-0512.cs50.io";
 
+    //--------------------------USUARIO-----------------------------//
     @GET("/denuncias/r1/user_listado")
     Call<List<Usuario>> getUsuario();
+
     @FormUrlEncoded
-    @GET("/denuncias/r1/user_login")
+    @POST("/denuncias/r1/user_login")
     Call<ResponseMessage> loginUsuario(@Field("username") String username,
                                        @Field("password") String password);
 
-    @GET("/denuncias/r1/registro ")
+    @FormUrlEncoded
+    @POST("/denuncias/r1/user_register")
+    Call<ResponseMessage> createUsuario(@Field("nombres") String nombres,
+                                        @Field("username") String username,
+                                        @Field("password") String password,
+                                        @Field("correo") String correo);
+
+    //-------------------------DENUNCIAS-----------------------------//
+    @GET("/denuncias/r1/registro")
     Call<List<Registro>> getRegistros();
 
     @FormUrlEncoded

@@ -2,6 +2,7 @@ package com.tecsup.jeferson.minidenuncias.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,32 +30,46 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = LoginActivity.class.getSimpleName();
 
     private EditText username_input,password_input;
-    private Button btn_ingresar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         username_input = (EditText)findViewById(R.id.username_input);
         password_input = (EditText)findViewById(R.id.password_input);
 
+        final String email = sharedPreferences.getString("email", null);
+        if(email != null){
+            username_input.setText(email);
+            password_input.requestFocus();
+        }
+
+        // islogged remember
+        if(sharedPreferences.getBoolean("islogged", false)){
+            // Go to Dashboard
+            goDashboard();
+        }
+
     }
+
     public void Ingresar(View view){
         final String username = username_input.getText().toString();
         String password = password_input.getText().toString();
 
         if(username.isEmpty() || password.isEmpty()){
-            Toast.makeText(this, "Campos obligatorios", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Campos obligatorios: username y password", Toast.LENGTH_SHORT).show();
         }
 
         ApiService service = ApiServiceGenerator.createService(ApiService.class);
 
-        Call<ResponseMessage> call = service.loginUsuario(username,password);
+        Call<ResponseMessage> call = null;
+        call = service.loginUsuario(username,password);
 
         call.enqueue(new Callback<ResponseMessage>() {
             @Override
-            public void onResponse(Call<ResponseMessage> call, final Response<ResponseMessage> response) {
+            public void onResponse(Call<ResponseMessage> call, Response<ResponseMessage> response) {
                 try {
                     int statusCode = response.code();
                     Log.d(TAG, "HTTP status code: " + statusCode);
@@ -69,6 +84,8 @@ public class LoginActivity extends AppCompatActivity {
                                 .putString("email", username)
                                 .putBoolean("islogged", true)
                                 .commit();
+
+                        goDashboard();
 
                     } else {
 
@@ -94,4 +111,18 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    public void Registrar(View view){
+        Intent intent = new Intent(LoginActivity.this, RegistroActivity.class);
+        startActivity(intent);
+    }
+
+
+    private void goDashboard() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("correo",username_input.getText().toString());
+        startActivity(intent);
+        finish();
+    }
+
 }

@@ -66,7 +66,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignEnd="@+id/txt_user">
             <EditText
-                android:id="@+id/act_usuario"
+                android:id="@+id/act_username"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="Escribir su Usuario"/>
@@ -125,7 +125,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignEnd="@+id/txt_correo">
             <EditText
-                android:id="@+id/act_contraseñ"
+                android:id="@+id/act_correo"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:hint="Escribir su Correo"
@@ -143,6 +143,6 @@
         android:text="Registrarse"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="120dp"/>
-        <!--android:onClick="Registrarse"/>-->
+        android:layout_marginStart="120dp"
+        android:onClick="Registrarse"/>
 </LinearLayout>
