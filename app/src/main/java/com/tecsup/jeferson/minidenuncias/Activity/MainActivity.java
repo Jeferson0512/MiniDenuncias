@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
         productosList = (RecyclerView) findViewById(R.id.recyclerview);
         productosList.setLayoutManager(new LinearLayoutManager(this));
 

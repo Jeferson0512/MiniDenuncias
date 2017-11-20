@@ -29,6 +29,10 @@ public interface ApiService {
 
     @GET("/denuncias/r1/user_listado")
     Call<List<Usuario>> getUsuario();
+    @FormUrlEncoded
+    @GET("/denuncias/r1/user_login")
+    Call<ResponseMessage> loginUsuario(@Field("username") String username,
+                                       @Field("password") String password);
 
     @GET("/denuncias/r1/registro ")
     Call<List<Registro>> getRegistros();
@@ -50,6 +54,4 @@ public interface ApiService {
 
     @GET("/denuncias/r1/registro/{id}")
     Call<Registro> showProducto(@Path("id") Integer id);
-
-
 }

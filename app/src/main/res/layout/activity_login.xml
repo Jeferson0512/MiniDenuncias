@@ -68,9 +68,20 @@
                 android:id="@+id/btn_ingresar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign In"
+                android:text="Ingresar"
                 android:textStyle="bold"
                 android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:onClick="Ingresar"/>
+
+            <Button
+                android:id="@+id/btn_registrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Registrar"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:background="@color/colorPrimaryDark"
                 android:textColor="@android:color/white"/>
 
         </LinearLayout>

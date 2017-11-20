@@ -37,8 +37,10 @@ public class DetailActivity extends AppCompatActivity {
         nombreText = (TextView)findViewById(R.id.nombre_text);
         detallesText = (TextView)findViewById(R.id.detalles_text);
 
+        /*
         id = getIntent().getExtras().getInt("ID");
         Log.e(TAG, "id:" + id);
+        * */
 
         initialize();
     }
